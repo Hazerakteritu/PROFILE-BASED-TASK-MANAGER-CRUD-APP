@@ -1,17 +1,18 @@
-const mysql = require('mysql');
+const mysql = require("mysql2");
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'task_manager'
-  });
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",     
+  password: "",    
+  database: "my_task" 
+});
 
-  connection.connect((err) => {
-    if (err) {
-      console.error('Error connecting to MySQL database:', err);
-      return;
-    }
-    console.log('Connected to MySQL database');
-  });
-  module.exports = connection;
+db.connect((err) => {
+  if (err) {
+    console.error("Database connection failed:", err);
+    return;
+  }
+  console.log("Connected to MySQL database");
+});
+
+module.exports = db;
